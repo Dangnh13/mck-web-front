@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-icon>mdi-test-tube</v-icon> <br/>
-    <p>message: {{ $t('hello') }}</p> 
+    <p>message : {{ $t('hello') }}</p> 
     <v-btn color="success" @click="changeLocale()">Change local</v-btn>
   </v-app>
 </template>
