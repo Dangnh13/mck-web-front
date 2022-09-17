@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "local": "vue-cli-service serve --mode local",
+    "dev": "vue-cli-service serve",
+    "stg": "vue-cli-service serve --mode staging",
+    "prod": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "vee-validate": "^3.4.14",
     "vue": "^2.6.14",
