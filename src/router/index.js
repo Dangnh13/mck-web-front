@@ -1,27 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import routes from './routes'
 
+// 1. Use plugin.
+// This installs <router-view> and <router-link>,
+// and injects $router and $route to all router-enabled child components
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
-
+// Create the router
 const router = new VueRouter({
+  mode:'history',
+  base: process.env.BASE_URL,
+  // Define route components
   routes
 })
+
+router.beforeResolve((to, from, next) => {
+  console.log('beforeResolve')
+  next();
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach call to ' + to);
+
+  if(to !== null) {
+      console.log('vao nexxt 1')
+      next();
+  }
+
+  console.log('vao nexxt 2')
+
+  next()
+});
+router.afterEach((to, from) => {
+  console.log('afterEach' + to + from)
+});
 
 export default router
