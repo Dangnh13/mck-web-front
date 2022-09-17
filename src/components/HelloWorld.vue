@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <v-icon>mdi-test-tube</v-icon> <br />
     <p>message clgt: {{ $t('hello') }}</p>
     {{'my name is Hai Dang' | uppercaseFirst}}
@@ -9,7 +9,8 @@
       <v-text-field v-model="value" label="Email" :error-messages="errors"></v-text-field>
     </ValidationProvider>
 
-  </v-app>
+  </div>
+ 
 </template>
 
 <script>
