@@ -2,6 +2,7 @@
   <v-app>
     <v-icon>mdi-test-tube</v-icon> <br />
     <p>message clgt: {{ $t('hello') }}</p>
+    {{'my name is Hai Dang' | uppercaseFirst}}
     <v-btn color="success" @click="changeLocale()">Change local</v-btn>
     <br /> validation:
     <ValidationProvider rules="required|email" name="email" v-slot="{ errors }">
