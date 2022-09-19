@@ -1,21 +1,37 @@
-import HomeView from '../views/HomeView.vue'
-
+import HomeView from '@/views/anonymous/HomeView.vue'
+import DashboardView from '@/views/DashboardView.vue'
+import AboutView from '@/views/anonymous/AboutView.vue'
 // Define route components
 const routes = [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+        path: '/',
+        components: {
+            default: DashboardView,
+            anonymous: HomeView,
+        },
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+        path: '/about',
+        components: {
+            default: DashboardView,
+            anonymous: AboutView,
+        }
+    },
+    {
+        path: '/404',
+        components: {
+            default: () => import('@/views/404View.vue'),
+            anonymous: () => import('@/views/anonymous/404View.vue'),
+        }
+    },
+    {
+        // will match everything
+        path: '/*', redirect: to => {
+            console.log(to.fullPath)
+            return { path: '/404' }
+        }
     }
-  ]
 
-  export default routes;
-  
+]
+
+export default routes;
