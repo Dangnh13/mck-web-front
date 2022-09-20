@@ -8,11 +8,17 @@ Vue.use(Vuex)
     loggedIn: false
   },
   getters: {
+    authenticationState: state => state.loggedIn
   },
   mutations: {
-    changeLoggedInState(state) {
+    CHANGE_LOGGEDIN_STATE: state => {
         state.loggedIn = !state.loggedIn
+    },
+    LOGOUT: (state, username) => {
+        state.loggedIn = !state.loggedIn
+        console.log(`${username} click logout`);
     }
+    
   },
   actions: {
   },

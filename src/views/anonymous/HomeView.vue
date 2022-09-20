@@ -7,6 +7,7 @@
 <script>
 import HomeLayout from "@/layout/HomeLayout.vue";
 export default {
+   
     components: {
         HomeLayout,
     },

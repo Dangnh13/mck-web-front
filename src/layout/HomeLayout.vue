@@ -6,7 +6,7 @@
             <nav>
                 <router-link active-class="active" to="/">Login</router-link> |
                 <router-link active-class="active" to="/about">About</router-link>
-                <v-btn color="success" @click="login()">Perform login</v-btn>
+                <v-btn color="success" @click="CHANGE_LOGGEDIN_STATE">Perform login</v-btn>
             </nav>
         </v-app-bar>
         <v-main>
@@ -21,12 +21,9 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
 export default {
-    methods: {
-        login() {
-            this.$store.commit('changeLoggedInState')
-        }
-    },
+    methods: mapMutations(['CHANGE_LOGGEDIN_STATE'])
 }
 </script>
 
