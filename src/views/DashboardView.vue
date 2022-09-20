@@ -1,21 +1,41 @@
 <template>
   <div class="home">
-    Dashboard after login
+    Dashboard after login with: <br />
+    PeopleAge is {{peopleAge}} <br />
+    AuthAge is {{getAge}}
+    <br /> myGetAge: {{myGetAge}}
     <router-link to="/about">About</router-link> |
-    <v-btn color="success" @click="LOGOUT('NGO HAI DANG')">LOGOUT</v-btn>
+    <v-btn color="success" @click="logoutAction('NGO Thu DANG')">LOGOUT</v-btn>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 
 export default {
   name: 'DashboardView',
   components: {
   },
-  methods: 
-    mapMutations(['CHANGE_LOGGEDIN_STATE', 'LOGOUT'])
+  computed: {
+    ...mapGetters(
+      'people', { peopleAge: 'getAge' },
+    ),
+    ...mapGetters(
+      'auth', ['getAge'],
+    ),
+
+    myGetAge() {
+      return this.getAge
+    }
+  },
+  methods: {
+    ...mapActions('auth', [
+      'logoutAction', // -> this.foo()
+    ]),
+
+    ...mapMutations('auth', ['CHANGE_LOGGEDIN_STATE', 'LOGOUT']),
+  }
 }
 </script>

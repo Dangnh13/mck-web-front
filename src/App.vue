@@ -1,8 +1,11 @@
 <template>
   <v-app>
     <div>
+      
+      <div>
       <router-view v-if="authenticationState"></router-view>
       <router-view v-else name="anonymous"></router-view>
+      </div>
     </div>
   </v-app>
 
@@ -10,11 +13,21 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
 
-export default {
 
-  computed: {...mapState(['loggedIn']), ...mapGetters(['authenticationState'])}
-  
+
+export default {
+    computed: {
+        ...mapState({
+            loggedIn: state => state.auth.loggedIn,
+        }),
+        ...mapGetters('auth',['authenticationState'])
+    }
+    
 }
+
+   
+
+
 </script>
 <style lang="scss">
 #app {

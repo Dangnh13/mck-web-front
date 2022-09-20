@@ -21,9 +21,11 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 export default {
-    methods: mapMutations(['CHANGE_LOGGEDIN_STATE'])
+    methods: {
+        ...mapMutations('auth', ['CHANGE_LOGGEDIN_STATE'])
+    }
 }
 </script>
 
