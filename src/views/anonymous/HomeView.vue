@@ -10,7 +10,9 @@
 <script>
 import HomeLayout from "@/layout/HomeLayout.vue";
 import { mapGetters, mapState } from "vuex";
+
 export default {
+   
     computed: {
         ...mapState({
             loggedIn: state => state.auth.loggedIn,

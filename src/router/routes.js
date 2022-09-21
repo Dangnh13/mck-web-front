@@ -12,6 +12,7 @@ const routes = [
     },
     {
         path: '/about',
+        name: 'about',
         components: {
             default: DashboardView,
             anonymous: AboutView,

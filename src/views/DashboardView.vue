@@ -13,7 +13,6 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 
-
 export default {
   name: 'DashboardView',
   components: {
@@ -32,7 +31,7 @@ export default {
   },
   methods: {
     ...mapActions('auth', [
-      'logoutAction', // -> this.foo()
+      'logoutAction',
     ]),
 
     ...mapMutations('auth', ['CHANGE_LOGGEDIN_STATE', 'LOGOUT']),
