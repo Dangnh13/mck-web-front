@@ -5,7 +5,8 @@ export default {
         hello: 'HI',
         validations: {
                 fields: {
-                        email: 'Email'
+                        email: 'Email',
+                        password: 'Password'
                 },
                 messages: {
                         ...validationMessage.messages

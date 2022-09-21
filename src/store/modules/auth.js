@@ -1,16 +1,10 @@
 const state = {
     loginWindow: null,
-
-    loggedIn: false,
-    info: {
-        age: 20
-    }
+    authenticated: false,
 };
 const getters = {
     isOpenLoginWindow: state => state.loginWindow,
-
-    authenticationState: state => state.loggedIn,
-    getAge: state => state.info.age
+    getAuthenticated: state => state.authenticated,
 };
 const mutations = {
     OPEN_LOGIN_WINDOW: (state, windowType) => {
@@ -23,23 +17,8 @@ const mutations = {
     CLOSE_LOGIN_WINDOW: state => {
         state.loginWindow = null;
     },
-
-
-    CHANGE_LOGGEDIN_STATE: state => {
-        console.log('vao CHANGE_LOGGEDIN_STATE mutation');
-        state.loggedIn = !state.loggedIn
-    },
-    LOGOUT: (state, username) => {
-        state.loggedIn = !state.loggedIn
-        console.log(`${username} click logout`);
-    }
-
 };
 const actions = {
-    logoutAction: (context, uName) => {
-        let { commit } = context;
-        commit('LOGOUT', uName)
-    }
 }
 
 export default {

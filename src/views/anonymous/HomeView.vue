@@ -1,23 +1,22 @@
 <template>
     <HomeLayout>
         Home Layout
-        auth/loggedIn state : {{loggedIn}} <br/>
-        auth/authenticationState state : {{authenticationState}} <br/>
-        auth/getAge getters: {{getAge}}
+        auth/loggedIn state :  <br/>
+        auth/authenticationState state :  <br/>
+        auth/getAge getters: 
+        <br/>
+        <div style="border: 1px solid red;height: 1200px"></div>
     </HomeLayout>
 </template>
 
 <script>
 import HomeLayout from "@/layout/HomeLayout.vue";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
    
     computed: {
-        ...mapState({
-            loggedIn: state => state.auth.loggedIn,
-        }),
-        ...mapGetters('auth',['getAge', 'authenticationState'])
+        ...mapGetters('auth',['authenticationState'])
     },
     components: {
         HomeLayout,

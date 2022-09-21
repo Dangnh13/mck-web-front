@@ -14,8 +14,6 @@ Object.keys(filters).forEach(key => {
 })
 
 Vue.config.productionTip = false
-console.log('NODE_ENV:', process.env.NODE_ENV);
-console.log('VUE APP BASE API', process.env.VUE_APP_BASE_API);
 
 Vue.mixin(initialMixin);
 

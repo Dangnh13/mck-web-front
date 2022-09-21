@@ -5,7 +5,8 @@ export default {
         hello: 'Xin chào',
         validations: {
                 fields: {
-                        email: 'Địa chỉ Email'
+                        email: 'Địa chỉ Email',
+                        password: 'Mật khẩu'
                 },
                 messages: {
                         ...validationMessage.messages

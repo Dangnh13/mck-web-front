@@ -1,15 +1,41 @@
-import components from "./components";
-import data from "./data";
-import computed from "./computed";
-import watch from "./watch";
-import created from "./created";
-import methods from "./methods";
+import {mapState, mapGetters, mapMutations} from 'vuex'
 
 export default {
-  components,
-  computed,
-  data,
-  watch,
-  created,
-  methods
+    data() {
+        return {
+        }
+    },
+
+    computed: {
+        ...mapState({
+            loginWindow: state => state.auth.loginWindow,
+        }),
+        ...mapGetters("auth", ["isOpenLoginWindow",]),
+        changeLoginWindow: {
+            // getter
+            get: function () {
+                return this.loginWindow;
+            },
+            // setter
+            set: function () {
+            }
+        },
+        openLoginDialog: {
+            // getter
+            get: function () {
+                return this.isOpenLoginWindow;
+            },
+            // setter
+            set: function (isOpen) {
+                if (!isOpen)
+                    this.CLOSE_LOGIN_WINDOW();
+            }
+        }
+    },
+    methods: {
+        ...mapMutations("auth", ["OPEN_LOGIN_WINDOW", "CLOSE_LOGIN_WINDOW"]),
+      },
+    components: {
+    },
+
 };
