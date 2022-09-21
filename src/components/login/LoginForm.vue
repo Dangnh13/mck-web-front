@@ -89,7 +89,7 @@ export default {
                 if (success) {
                     let response = await AuthService.login(new LoginRequest('dang.nh@gmail.com', 'pass123'))
                     console.log('response :', response);
-                    localStorage.setItem('user', JSON.stringify(response))
+                    this.setAuthenticationState(true)
                     return true;
                 }
                 return false;

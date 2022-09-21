@@ -11,13 +11,13 @@
 
 <script>
 import HomeLayout from "@/layout/HomeLayout.vue";
-import { mapGetters } from "vuex";
+import { mapGetters} from "vuex";
 
 export default {
-   
     computed: {
-        ...mapGetters('auth',['authenticationState'])
+        ...mapGetters('auth',['authenticationState']),
     },
+    
     components: {
         HomeLayout,
     },

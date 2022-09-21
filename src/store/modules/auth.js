@@ -17,8 +17,14 @@ const mutations = {
     CLOSE_LOGIN_WINDOW: state => {
         state.loginWindow = null;
     },
+    SET_AUTHENTICATION_STATE: (state, isLoggedIn) => {
+        state.authenticated = isLoggedIn;
+    }
 };
 const actions = {
+    setAuthenticationState({ commit }, isLoggedIn) {
+        commit("SET_AUTHENTICATION_STATE", isLoggedIn);
+      },
 }
 
 export default {

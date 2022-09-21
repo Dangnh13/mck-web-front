@@ -1,4 +1,4 @@
-import {mapState, mapGetters, mapMutations} from 'vuex'
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
     data() {
@@ -34,6 +34,7 @@ export default {
     },
     methods: {
         ...mapMutations("auth", ["OPEN_LOGIN_WINDOW", "CLOSE_LOGIN_WINDOW"]),
+        ...mapActions('auth', ['setAuthenticationState'])
       },
     components: {
     },

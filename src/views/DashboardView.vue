@@ -1,16 +1,14 @@
 <template>
   <div class="home">
-    Dashboard after login with: <br />
-    PeopleAge is {{peopleAge}} <br />
-    AuthAge is {{getAge}}
-    <br /> myGetAge: {{myGetAge}}
+    Dashboard view <br />
     <router-link to="/about">About</router-link> |
-    <v-btn color="success" @click="doLogout()">LOGOUT</v-btn>
+    <v-btn color="success" @click="setAuthenticationState(false)">LOGOUT</v-btn>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: 'DashboardView',
   components: {
@@ -18,10 +16,8 @@ export default {
   computed: {
   },
   methods: {
-    doLogout() {
-      localStorage.removeItem('user')
-      this.$router.push('/')
-    }
-  }
+    ...mapActions('auth', ['setAuthenticationState'])
+  },
+
 }
 </script>
