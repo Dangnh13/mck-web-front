@@ -6,6 +6,7 @@ import '@/plugins/validation'
 import router from './router'
 import * as filters from './filters' // global filters
 import store from './store'
+import './plugins/base'
 import initialMixin from '@/mixins/initial'
 
 // register global utility filters

@@ -10,11 +10,19 @@ const store = new Vuex.Store({
         paths: ['auth.authenticated', 'lang']
     })],
     state: {
+        barColor: '#f5f5f5;',
+        barImage: 'https://previews.123rf.com/images/apostrophe/apostrophe2007/apostrophe200700048/151181580-abstract-black-background-blur-with-gold-ribbon-sidebar-luxury-background-dark-gray-background-with-.jpg?fj=1',
+        drawer: null,
     },
     getters: {
     },
     mutations: {
-       
+        SET_BAR_IMAGE (state, payload) {
+            state.barImage = payload
+          },
+          SET_DRAWER (state, payload) {
+            state.drawer = payload
+          },
     },
     actions: {
     },
