@@ -79,8 +79,8 @@ export default {
     mixins: [mixin],
     data() {
         return {
-            email: null,
-            password: null
+            email: 'dang.nh.aprotrain@gmail.com',
+            password: '123'
         }
     },
     methods: {

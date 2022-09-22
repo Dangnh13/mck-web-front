@@ -1,5 +1,4 @@
 import HomeView from '@/views/anonymous/HomeView.vue'
-import DashboardView from '@/views/DashboardView.vue'
 import AboutView from '@/views/anonymous/AboutView.vue'
 // Define route components
 const routes = [
@@ -7,15 +6,29 @@ const routes = [
         path: '/',
         name: 'home',
         components: {
-            default: DashboardView,
+            default: () => import('@/views/Index.vue'),
             anonymous: HomeView,
         },
+        children: [
+            // Dashboard
+            {
+                name: 'Dashboard',
+                path: '',
+                component: () => import('@/views/DashboardView'),
+            },
+            {
+                name: 'User Profile',
+                path: 'user',
+                component: () => import('@/views/UserProfile'),
+                meta: { requiresAuth: true }
+              },
+        ],
     },
     {
         path: '/about',
         name: 'about',
         components: {
-            default: DashboardView,
+            default: () => import('@/views/Index.vue'),
             anonymous: AboutView,
         }
     },

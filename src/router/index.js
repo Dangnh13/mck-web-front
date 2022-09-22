@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
-
+import store from '@/store/index.js'
 // 1. Use plugin.
 // This installs <router-view> and <router-link>,
 // and injects $router and $route to all router-enabled child components
@@ -16,16 +16,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-
-  // TODO get from local storage
-  let auth = {
-    loggedIn: false
-  }
-console.log(to)
   if (to.matched.some(record => record.meta.requiresAuth)) {
+    
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (!auth.loggedIn()) {
+    const authenticated = store.getters['auth/getAuthenticated']
+    if (!authenticated) {
       next({
         path: '/',
         query: { redirect: to.fullPath }

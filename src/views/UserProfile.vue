@@ -1,6 +1,6 @@
 <template>
     <div>
-            Dashboard child
+        User PROFILE
     </div>
 </template>
 
