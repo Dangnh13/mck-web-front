@@ -5,17 +5,20 @@
             <v-app-bar-title>Appbar title</v-app-bar-title>
             <v-spacer></v-spacer>
             <nav class="d-none d-md-block">
+                <v-btn text @click="forwardToRouteName('home')">
+                    {{$t('nav.home')}}
+                </v-btn>
                 <v-btn text @click="forwardToRouteName('about')">
-                    About Us
+                    {{$t('nav.aboutUs')}}
                 </v-btn>
                 <v-btn text>
-                    Pricing
+                    {{$t('nav.pricing')}}
                 </v-btn>
                 <v-btn text>
-                    Use Cases
+                    {{$t('nav.useCases')}}
                 </v-btn>
                 <v-btn text>
-                    Contact
+                    {{$t('nav.contact')}}
                 </v-btn>
             </nav>
             <v-spacer></v-spacer>
@@ -24,22 +27,22 @@
                     <v-btn class="ma-2" text v-bind="attrs" v-on="on">
                         <v-icon dark left>
                             mdi-web
-                        </v-icon>English
+                        </v-icon>{{$t(getLangItemSelected.title)}}
                     </v-btn>
                 </template>
                 <v-list>
-                    <v-list-item-group color="primary">
-                        <v-list-item v-for="(item, i) in items" :key="i">
-                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-group color="primary" @change="changeLang()" v-model="selectedLang">
+                        <v-list-item v-for="(item, i) in langItems" :key="i">
+                            <v-list-item-title>{{$t( item.title )}}</v-list-item-title>
                         </v-list-item>
                     </v-list-item-group>
                 </v-list>
             </v-menu>
             <v-btn text @click="OPEN_LOGIN_WINDOW('LOGIN')">
-                Login
+                {{$t('nav.signIn')}}
             </v-btn>
             <v-btn text @click="OPEN_LOGIN_WINDOW('SIGN_UP')">
-                Sign Up
+                {{$t('nav.signUp')}}
             </v-btn>
         </v-app-bar>
 
@@ -56,13 +59,9 @@
             </v-list-item>
             <v-divider></v-divider>
             <v-list dense nav>
-                <v-list-item v-for="item in items" :key="item.title" link>
-                    <v-list-item-icon>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
-
+                <v-list-item  :key="1" link>
                     <v-list-item-content>
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        <v-list-item-title>ITEM 1</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -92,16 +91,13 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, } from 'vuex';
 import LoginAndRegist from '@/components/login/LoginAndRegist.vue';
 export default {
     data() {
         return {
+            selectedLang: null,
             drawer: false,
-            items: [
-                { title: "English" },
-                { title: "VietNam" },
-            ],
             icons: [
                 'mdi-facebook',
                 'mdi-twitter',
@@ -110,8 +106,23 @@ export default {
             ],
         };
     },
+    created () {
+        this.selectedLang = this.getIndexOfLangItemSelected;
+    },
+    computed: {
+        ...mapState({
+            langItems: state => state.lang.langItems,
+        }),
+        ...mapGetters('lang', ['getLangItemSelected', 'getIndexOfLangItemSelected']),
+       
+    },
     methods: {
-        ...mapMutations("auth", ["CHANGE_LOGGEDIN_STATE", "OPEN_LOGIN_WINDOW"]),
+        ...mapMutations("auth", ["OPEN_LOGIN_WINDOW"]),
+        ...mapMutations("lang", ['CHANGE_LANGUAGE']),
+        changeLang() {
+            this.CHANGE_LANGUAGE(this.selectedLang)
+            this.$i18n.locale=this.getLangItemSelected.key
+        }
     },
     components: { LoginAndRegist, }
 }

@@ -8,12 +8,19 @@
 
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
+  created() {
+    let langSeleteced = this.getLangItemSelected;
+    if (langSeleteced) {
+      this.$i18n.locale = langSeleteced.key
+    }
+  },
   computed: {
     ...mapGetters(
-      'auth', ['getAuthenticated', ],
+      'auth', ['getAuthenticated',],
     ),
+    ...mapGetters('lang', ['getLangItemSelected']),
   },
 }
 

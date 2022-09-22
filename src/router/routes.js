@@ -5,6 +5,7 @@ import AboutView from '@/views/anonymous/AboutView.vue'
 const routes = [
     {
         path: '/',
+        name: 'home',
         components: {
             default: DashboardView,
             anonymous: HomeView,

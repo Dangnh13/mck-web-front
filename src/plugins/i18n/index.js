@@ -6,7 +6,7 @@ Vue.use(VueI18n)
 
 export default new VueI18n(
     {
-        locale: 'vi',
+        locale: 'en',
         fallbackLocale: 'en',
         silentFallbackWarn: true, // disable fallback local warning message in console log
         messages
