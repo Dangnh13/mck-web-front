@@ -3,7 +3,7 @@ const state = {
         {
             key: 'en',
             title: 'langTitleEN',
-            seletected: true
+            seletected: false
         },
         {
             key: 'vi',
@@ -16,6 +16,7 @@ const state = {
 const getters = {
     getLangItemSelected: state => state.langItems.find(e => e.seletected),
     getIndexOfLangItemSelected: state => state.langItems.findIndex(e => e.seletected),
+    getLangByKey: (state, key) => state.langItems.find(e => e.key === key),
 };
 const mutations = {
     CHANGE_LANGUAGE: (state, index) => {
@@ -24,6 +25,12 @@ const mutations = {
         if(foundLang) {
             foundLang.seletected = true;
             currentLang.seletected = false;
+        }
+    },
+    SELETECT_LANG: (state, key) => {
+        let findByKey = getters.getLangByKey(state, key);
+        if(findByKey) {
+            findByKey.seletected = true;
         }
     },
 };

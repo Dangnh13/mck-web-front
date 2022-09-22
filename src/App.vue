@@ -8,11 +8,14 @@
 
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 export default {
   created() {
     let langSeleteced = this.getLangItemSelected;
-    if (langSeleteced) {
+    if (!langSeleteced) {
+      let currentLocal = this.$i18n.locale;
+      this.SELETECT_LANG(currentLocal)
+    } else {
       this.$i18n.locale = langSeleteced.key
     }
   },
@@ -22,6 +25,14 @@ export default {
     ),
     ...mapGetters('lang', ['getLangItemSelected']),
   },
+    methods: {
+        ...mapMutations("lang", [ 'SELETECT_LANG']),
+        changeLang() {
+            this.CHANGE_LANGUAGE(this.selectedLang)
+            this.$i18n.locale=this.getLangItemSelected.key
+        }
+    },
+
 }
 
 </script>
