@@ -6,7 +6,9 @@ import auth from './modules/auth'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-    plugins: [createPersistedState()],
+    plugins: [createPersistedState({
+        paths: ['auth.authenticated']
+    })],
     state: {
         count: 1
     },

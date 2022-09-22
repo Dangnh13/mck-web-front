@@ -17,6 +17,8 @@ Vue.config.productionTip = false
 
 Vue.mixin(initialMixin);
 
+// Vue.config.devtools = false
+
 new Vue({
   vuetify,
   i18n,
