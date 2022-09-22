@@ -1,25 +1,20 @@
 <template>
-    <HomeLayout>
-        Home Layout
-        auth/loggedIn state :  <br/>
-        auth/authenticationState state :  <br/>
-        auth/getAge getters: 
+    <GuestLayout>
+        <v-container grid-list-xs>
+            Home Page NOT LOGIN
+        </v-container>
+       
+        
         <br/>
-        <div style="border: 1px solid red;height: 1200px"></div>
-    </HomeLayout>
+    </GuestLayout>
 </template>
 
 <script>
-import HomeLayout from "@/layout/HomeLayout.vue";
-import { mapGetters} from "vuex";
+import GuestLayout from "@/layout/GuestLayout.vue";
 
 export default {
-    computed: {
-        ...mapGetters('auth',['authenticationState']),
-    },
-    
     components: {
-        HomeLayout,
+        GuestLayout,
     },
 }
 </script>

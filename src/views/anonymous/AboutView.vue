@@ -1,14 +1,17 @@
 <template>
-  <HomeLayout>
+  <GuestLayout>
+    <v-container grid-list-xs>
       About view
-  </HomeLayout>
+    </v-container>
+
+  </GuestLayout>
 </template>
 
 <script>
-import HomeLayout from "@/layout/HomeLayout.vue";
+import GuestLayout from "@/layout/GuestLayout.vue";
 export default {
   components: {
-      HomeLayout,
+    GuestLayout,
   },
 }
 </script>
